@@ -1,0 +1,1 @@
+# MnNiGa-ternary-model
