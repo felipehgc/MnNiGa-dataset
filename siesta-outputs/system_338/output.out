@@ -1,0 +1,1612 @@
+Executable      : /home/users/felipegc/woltsoft/SIESTA/siesta-5.2.2/build/bin/siesta
+Version         : 5.2.2
+Architecture    : x86_64
+Compiler version: GNU-9.3.0
+Compiler flags  : -O3 -march=native
+Parallelisations: MPI
+Lua support
+Native ELPA support
+ELSI support. Solvers:
+   ELPA (internal) 
+   NTPoly
+   OMM
+DFT-D3 support
+Wannier90 wrapper support
+
+Runtime information:
+* Directory : /home/users/felipegc/MnNiGa/optimizations_afm/top/structure_calc_338
+* Running on 36 nodes in parallel.
+>> Start of run:  31-JUL-2025  22:52:31
+
+                           *********************** 
+                           *  WELCOME TO SIESTA  * 
+                           *********************** 
+
+ NOTE: Siesta V5 introduces some new defaults for basis-set generation
+ NOTE: which might lead to slightly different numerical results.
+ NOTE: Please see the manual for full details and compatibility measures.
+
+
+reinit: Reading from standard input
+reinit: Dumping input in INPUT_TMP.39054
+************************** Dump of input data file ****************************
+SystemName          hea
+SystemLabel         hea
+Reparametrize.Pseudos T
+Restricted.Radial.Grid F
+%include atoms.fdf
+MaxSCFIterations     20000
+SCF.Mix              Hamiltonian
+SCF.Mixer.Method     Broyden
+#SCF.Mixer.Variant    original #Pulay original
+SCF.Mixer.History    8
+SCF.Mixer.Weight     0.07
+SCF.H.Converge       False
+SCF.DM.Converge      True
+SCF.DM.Tolerance     5.d-4
+SCF.H.Tolerance      5.d-3 eV
+MeshCutoff 300.0 Ry
+MD.UseSaveCG         False
+DM.UseSaveDM         False
+NumberOfEigenStates -20
+ElectronicTemperature 300 K
+WriteCoorXmol        True
+XC.Functional     GGA
+XC.authors        PBEsol
+Spin polarized
+DM.InitSpin.AF true
+SolutionMethod       diagon
+#Diag.Algorithm        MRRR
+###################################
+###################################
+# Full template for Basis param.
+###################################
+###################################
+Basis.Pressure 0.3 GPa
+PAO.SoftDefault T
+PAO.SoftPotential 50.0 Ry
+PAO.SoftInnerRadius 0.70
+PAO.BasisType split
+PAO.EnergyShift 0.0019 eV
+PAO.BasisSize TZP
+PAO.SplitTailNorm T
+            %block kgrid_Monkhorst_Pack
+            6  0  0  0.
+            0  2  0  0.
+            0  0  4  0.
+            %endblock kgrid_Monkhorst_Pack
+            MD.TypeOfRun CG
+            MD.Steps         500
+            MD.VariableCell true
+            MD.MaxForceTol 0.05 eV/Ang
+            WriteMDHistory true
+            WriteForces true
+            Write.OrbitalIndex true
+            Charge.Mulliken end
+            COOP.Write true
+            %block ProjectedDensityOfStates
+            -20.00 20.00 0.1 1000 eV
+            %endblock ProjectedDensityOfStates
+************************** End of input data file *****************************
+
+reinit: -----------------------------------------------------------------------
+reinit: System Name: hea
+reinit: -----------------------------------------------------------------------
+reinit: System Label: hea
+reinit: -----------------------------------------------------------------------
+
+NOTE on units for spin output: 
+{S} is the spin magnetic moment, in units of the Bohr magneton,
+assuming a g-factor for the electron spin of exactly 2.
+The spin magnetic moment is then numerically equal to the charge inbalance,
+in units of electrons, between the spin-up and -down channels.
+
+
+initatom: Reading input for the pseudopotentials and atomic orbitals ----------
+Species number:   1 Atomic number:   25 Label: Mn
+
+Ground state valence configuration (from tables):   4s02  4p00  3d05  4f00
+
+---- Processing specs for species: Mn
+Reading pseudopotential information in PSML from:
+  Mn.psml
+PSML file version: 1.1
+Using libxc ids:  101 130
+GGA--PBE XC_GGA_X_PBE--XC_GGA_C_PBE pb
+PSML uuid: e5ebd880-be41-11e7-659b-074ddfc7bd15
+Semicore shell(s) with  8 electrons included in the valence for Mn
+
+---- Pseudopotential check for Mn
+
+Pseudized shells:
+3s( 2.00) rc: 1.41
+3p( 6.00) rc: 1.21
+3d( 5.00) rc: 1.61
+Valence configuration for ps generation: 3s:3p:3d:4s: Total charge:  15.000000
+Semicore shell(s): 3s 3p
+Fallback to non-perturbative polarization scheme for Mn
+Please see the manual if this is not desired in principle
+For Mn, standard SIESTA heuristics set lmxkb to 3
+ (one more than the basis l, including polarization orbitals).
+Use PS.lmax or PS.KBprojectors blocks to override.
+Mn pseudopotential only contains V_ls up to l=2 -- lmxkb reset.
+
+<basis_specs>
+===============================================================================
+Mn                   Z=  25    Mass=  54.938        Charge= 0.17977+309
+Lmxo=2 Lmxkb= 2    BasisType=split      Semic=T
+L=0  Nsemic=1  Cnfigmx=4
+          i=1  nzeta=1  polorb=0  (3s)  (semicore shell)
+            splnorm:   0.15000    
+               vcte:    50.000    
+               rinn:  -0.70000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000    
+            lambdas:    1.0000    
+          i=2  nzeta=3  polorb=0  (4s)  (to be polarized non-perturbatively)
+            splnorm:   0.15000    
+               vcte:    50.000    
+               rinn:  -0.70000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000      0.0000      0.0000    
+            lambdas:    1.0000      1.0000      1.0000    
+L=1  Nsemic=1  Cnfigmx=4
+          i=1  nzeta=1  polorb=0  (3p)  (semicore shell)
+            splnorm:   0.15000    
+               vcte:    50.000    
+               rinn:  -0.70000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000    
+            lambdas:    1.0000    
+          i=2  nzeta=1  polorb=0  (4p)  (non-perturbative polarization shell)
+            splnorm:   0.15000    
+               vcte:    50.000    
+               rinn:  -0.70000    
+               qcoe:   0.33843-315
+               qyuk:    0.0000    
+               qwid:   0.69530-309
+                rcs:    0.0000    
+            lambdas:    1.0000    
+L=2  Nsemic=0  Cnfigmx=3
+          i=1  nzeta=3  polorb=0  (3d)
+            splnorm:   0.15000    
+               vcte:    50.000    
+               rinn:  -0.70000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000      0.0000      0.0000    
+            lambdas:    1.0000      1.0000      1.0000    
+-------------------------------------------------------------------------------
+L=0  Nkbl=2  erefs: 0.17977+309 0.17977+309
+L=1  Nkbl=2  erefs: 0.17977+309 0.17977+309
+L=2  Nkbl=1  erefs: 0.17977+309
+===============================================================================
+</basis_specs>
+
+Using PAO.SplitTailNorm
+atom: Called for Mn                    (Z =  25)
+Maximum radius (at nrval) set to   50.00000 8518
+
+read_vps: Pseudopotential generation method:
+read_vps: ONCVPSP-3.Hamann's oncvpsp                        
+Valence charge in pseudo generation:   15.00000
+
+read_vps: Pseudopotential includes a core correction:
+read_vps: Pseudo-core for xc-correction
+
+xc_check: Exchange-correlation functional:
+xc_check: GGA PBEsol
+xc_check: WARNING: Pseudopotential generated with GGA PBE functional
+Got Vlocal (oncv-fit) from psml data
+Choosing vlocal chloc cutoff:  3.504263
+qtot up to nchloc:   15.00032895
+atom: Maximum radius for chlocal:    3.50426
+atom: Maximum radius for r*vlocal+2*Zval:    3.50426
+Reading KB projs from Mn psml data
+Using scalar-relativistic projectors in PSML file
+
+PSML: Kleinman-Bylander projectors: 
+   l= 0   rc=  1.427391   Ekb= 18.471374
+   l= 0   rc=  1.430269   Ekb=  3.121111
+   l= 1   rc=  1.224702   Ekb=  3.156115
+   l= 1   rc=  1.224702   Ekb= -1.424352
+   l= 2   rc=  1.630219   Ekb=-13.224142
+   l= 2   rc=  1.630219   Ekb= -4.330632
+
+PSML: Total number of  Kleinman-Bylander projectors:  18
+atom: -------------------------------------------------------------------------
+
+atom: SANKEY-TYPE ORBITALS:
+atom: Selected multiple-zeta basis: split     
+
+SPLIT: Orbitals with angular momentum L= 0
+
+SPLIT: Basis orbitals for state 3s
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000140 Ry
+Split based on tail norm
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =    3.380000
+                 energy =   -6.293298
+                kinetic =    2.848567
+    potential(screened) =   -9.141865
+       potential(ionic) =  -33.519753
+
+SPLIT: Basis orbitals for state 4s
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000140 Ry
+Split based on tail norm
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =   10.002455
+                 energy =   -0.450676
+                kinetic =    1.112603
+    potential(screened) =   -1.563278
+       potential(ionic) =  -13.199632
+
+   izeta = 2
+                 rmatch =    5.430276
+              splitnorm =    0.150000
+                 energy =   -0.360834
+                kinetic =    1.875764
+    potential(screened) =   -2.236598
+       potential(ionic) =  -15.982656
+
+   izeta = 3
+                 rmatch =    6.342382
+              splitnorm =    0.075000
+                 energy =   -0.415048
+                kinetic =    1.529261
+    potential(screened) =   -1.944310
+       potential(ionic) =  -14.865309
+
+SPLIT: Orbitals with angular momentum L= 1
+
+SPLIT: Basis orbitals for state 3p
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000140 Ry
+Split based on tail norm
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =    3.873861
+                 energy =   -3.996757
+                kinetic =    6.976018
+    potential(screened) =  -10.972775
+       potential(ionic) =  -34.563053
+
+SPLIT: Basis orbitals for state 4p
+SPLIT: Non-perturbative polarization orbs for state 4s
+SPLIT: rc(1st zeta) (re)set to: 10.0025 (expansion factor: 1.0000)
+Split based on tail norm
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =   10.002455
+                 energy =   -0.085879
+                kinetic =    0.770317
+    potential(screened) =   -0.856196
+       potential(ionic) =   -9.409918
+
+SPLIT: Orbitals with angular momentum L= 2
+
+SPLIT: Basis orbitals for state 3d
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000140 Ry
+Split based on tail norm
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =    7.238756
+                 energy =   -0.490123
+                kinetic =    9.261574
+    potential(screened) =   -9.751697
+       potential(ionic) =  -30.334327
+
+   izeta = 2
+                 rmatch =    3.144499
+              splitnorm =    0.150000
+                 energy =   -0.401801
+                kinetic =   11.021778
+    potential(screened) =  -11.423579
+       potential(ionic) =  -33.555539
+
+   izeta = 3
+                 rmatch =    3.972182
+              splitnorm =    0.075000
+                 energy =   -0.464167
+                kinetic =   10.072383
+    potential(screened) =  -10.536551
+       potential(ionic) =  -31.940836
+atom: Total number of Sankey-type orbitals: 25
+
+atm_pop: Valence configuration (for local Pseudopot. screening):
+ 3s( 2.00) 4s( 2.00)                                                  
+ 3p( 6.00) 4p( 0.00)                                                  
+ 3d( 5.00)                                                            
+Vna: chval, zval:   15.00000  15.00000
+
+Vna:  Cut-off radius for the neutral-atom potential:  10.002455
+comcore: Pseudo-core radius Rcore=  2.115123
+
+atom: _________________________________________________________________________
+
+prinput: Basis input 
+
+PAO.BasisType split     
+
+%block ChemicalSpeciesLabel
+    1   25 Mn                      # Species index, atomic number, species label
+%endblock ChemicalSpeciesLabel
+
+%block PAO.Basis                 # Define Basis set
+# WARNING: This information might be incomplete!
+Mn                    5                    # Species label, number of l-shells
+ n=3   0   1                         # n, l, Nzeta 
+   3.380   
+   1.000   
+ n=4   0   3                         # n, l, Nzeta 
+  10.002      5.430      6.342   
+   1.000      1.000      1.000   
+ n=3   1   1                         # n, l, Nzeta 
+   3.874   
+   1.000   
+ n=4   1   1                         # n, l, Nzeta 
+  10.002   
+   1.000   
+ n=3   2   3                         # n, l, Nzeta 
+   7.239      3.144      3.972   
+   1.000      1.000      1.000   
+%endblock PAO.Basis
+
+prinput: ----------------------------------------------------------------------
+
+coor:   Atomic-coordinates input format  =     Fractional
+
+siesta: Atomic coordinates (Bohr) and species
+siesta:      0.00000   0.00000   0.00000  1        1
+siesta:      0.00000   4.70356   0.00000  1        2
+siesta:      0.00000   9.40712   0.00000  1        3
+siesta:      2.35178   2.35178   3.32592  1        4
+siesta:      2.35178   7.05534   3.32592  1        5
+siesta:      2.35178  11.75890   3.32592  1        6
+
+siesta: System type = bulk      
+
+initatomlists: Number of atoms, orbitals, and projectors:      6   150   108
+
+coxmol: Writing XMOL coordinates into file hea.xyz                                                                                                                                                                                                                             
+
+siesta: ******************** Simulation parameters ****************************
+siesta:
+siesta: The following are some of the parameters of the simulation.
+siesta: A complete list of the parameters used, including default values,
+siesta: can be found in file out.fdf
+siesta:
+redata: Spin configuration                          = collinear
+redata: Number of spin components                   = 2
+redata: Time-Reversal Symmetry                      = T
+redata: Spin spiral                                 = F
+redata: Long output                                 =   F
+redata: Number of Atomic Species                    =        1
+redata: Charge density info will appear in .RHO file
+redata: Write Mulliken charges (when)               = end
+redata: Write Mulliken Pop.                         = Atomic and Orbital charges
+redata: Write Hirshfeld charges (when)              = none
+redata: Write Voronoi charges (when)                = none
+redata: Write spin charge (when)                    = scf
+redata: Matel table size (NRTAB)                    =     1024
+redata: Mesh Cutoff                                 =   300.0000 Ry
+redata: Net charge of the system                    =     0.0000 |e|
+redata: Min. number of SCF Iter                     =        0
+redata: Max. number of SCF Iter                     =    20000
+redata: SCF convergence failure will abort job
+redata: SCF mix quantity                            = Hamiltonian
+redata: Mix DM or H after convergence               =   F
+redata: Recompute H after scf cycle                 =   F
+redata: Mix DM in first SCF step                    =   T
+redata: Write Pulay info on disk                    =   F
+redata: New DM Occupancy tolerance                  = 0.000000000001
+redata: No kicks to SCF
+redata: DM Mixing Weight for Kicks                  =     0.5000
+redata: Require Harris convergence for SCF          =   F
+redata: Harris energy tolerance for SCF             =     0.000100 eV
+redata: Require DM convergence for SCF              =   T
+redata: DM tolerance for SCF                        =     0.000500
+redata: Require EDM convergence for SCF             =   F
+redata: EDM tolerance for SCF                       =     0.001000 eV
+redata: Require H convergence for SCF               =   F
+redata: Hamiltonian tolerance for SCF               =     0.005000 eV
+redata: Require (free) Energy convergence for SCF   =   F
+redata: (free) Energy tolerance for SCF             =     0.000100 eV
+redata: Antiferro initial spin density              =   T
+redata: Using DFT-D3 dispersion                     =   F
+redata: Using Saved Data (generic)                  =   F
+redata: Use continuation files for DM               =   F
+redata: Neglect nonoverlap interactions             =   F
+redata: Method of Calculation                       = Diagonalization
+redata: Electronic Temperature                      =   300.0000 K
+redata: Fix the spin of the system                  =   F
+redata: Max. number of TDED Iter                    =        1
+redata: Number of TDED substeps                     =        3
+redata: Dynamics option                             = CG coord. optimization
+redata: Variable cell                               =   T
+redata: Use continuation files for CG               =   F
+redata: Max atomic displ per move                   =     0.1058 Ang
+redata: Maximum number of optimization moves        =      500
+redata: Force tolerance                             =     0.0500 eV/Ang
+redata: Stress tolerance                            =     1.0000 GPa
+mix.SCF: Broyden mixing                          = Broyden
+mix.SCF:    History steps                        = 8
+mix.SCF:    Linear mixing weight                 =     0.070000
+mix.SCF:    Inverse Jacobian weight              =     0.070000
+mix.SCF:    Weight prime                         =     0.070000
+mix.SCF:    SVD condition                        = 0.1000E-07
+mix.SCF: Spin-component mixing                   all
+redata: ***********************************************************************
+
+%block SCF.Mixers
+  Broyden
+%endblock SCF.Mixers
+
+%block SCF.Mixer.Broyden
+  # Mixing method
+  method broyden
+
+  # Mixing options
+  weight 0.0700
+  weight.linear 0.0700
+  weight.prime 0.0700
+  history 8
+%endblock SCF.Mixer.Broyden
+
+DM_history_depth set to one: no extrapolation allowed by default for geometry relaxation
+Size of DM history Fstack: 1
+Total number of electrons:    90.000000
+Total ionic charge:    90.000000
+
+* ProcessorY, Blocksize:    9   4
+
+
+* Orbital distribution balance (max,min):     8     4
+
+k-point displ. along   1 input, could be:     0.00    0.50
+k-point displ. along   2 input, could be:     0.00    0.50
+k-point displ. along   3 input, could be:     0.00    0.50
+ Kpoints in:           32 . Kpoints trimmed:           31
+
+siesta: k-grid: Number of k-points = 31
+siesta: k-points from Monkhorst-Pack grid
+siesta: k-cutoff (effective) =     7.040 Ang
+siesta: k-point supercell and displacements
+siesta: k-grid:     6     0     0      0.000
+siesta: k-grid:     0     2     0      0.000
+siesta: k-grid:     0     0     4      0.000
+k-point displ. along   1 input, could be:     0.00    0.50
+k-point displ. along   2 input, could be:     0.00    0.50
+k-point displ. along   3 input, could be:     0.00    0.50
+ Kpoints in:           32 . Kpoints trimmed:           31
+
+siesta: PDOS k-grid: Number of k-points = 31
+siesta: PDOS k-points from Monkhorst-Pack grid
+siesta: PDOS k-cutoff (effective) =     0.000 Ang
+siesta: PDOS k-point supercell and displacements
+siesta: k-grid:     6     0     0      0.000
+siesta: k-grid:     0     2     0      0.000
+siesta: k-grid:     0     0     4      0.000
+
+diag: Algorithm                                     = D&C
+diag: Parallel over k                               =   F
+diag: Use parallel 2D distribution                  =   T
+diag: Parallel block-size                           = 4
+diag: Parallel distribution                         =     6 x     6
+diag: Used triangular part                          = Lower
+diag: Absolute tolerance                            =  0.100E-15
+diag: Orthogonalization factor                      =  0.100E-05
+diag: Memory factor                                 =  1.0000
+diag: The diagonalization method chosen cannot compute a reduced number of eigenvectors.
+diag: Resetting neigwanted 67 to 150
+
+superc: Internal auxiliary supercell:     9 x     5 x     7  =     315
+superc: Number of atoms, orbitals, and projectors:   1890  47250  34020
+
+
+ts: **************************************************************
+ts: Save H and S matrices                           =    F
+ts: Save DM and EDM matrices                        =    F
+ts: Only save the overlap matrix S                  =    F
+ts: **************************************************************
+
+************************ Begin: TS CHECKS AND WARNINGS ************************
+************************ End: TS CHECKS AND WARNINGS **************************
+
+
+                     ====================================
+                        Begin CG opt. move =      0
+                     ====================================
+
+superc: Internal auxiliary supercell:     9 x     5 x     7  =     315
+superc: Number of atoms, orbitals, and projectors:   1890  47250  34020
+
+outcell: Unit cell vectors (Ang):
+        2.489016    0.000000    0.000000
+        0.000000    7.467048    0.000000
+        0.000000    0.000000    3.520000
+
+outcell: Cell vector modules (Ang)   :    2.489016    7.467048    3.520000
+outcell: Cell angles (23,13,12) (deg):     90.0000     90.0000     90.0000
+outcell: Cell volume (Ang**3)        :     65.4213
+<dSpData1D:S at geom step 0
+  <sparsity:sparsity for geom step 0
+    nrows_g=150 nrows=8 sparsity=1.1949 nnzs=26886, refcount: 7>
+  <dData1D:(new from dSpData1D) n=26886, refcount: 1>
+refcount: 1>
+new_DM -- step:     1
+Initializing Density Matrix...
+DM filled with atomic data:
+<dSpData2D:DM initialized from atoms
+  <sparsity:sparsity for geom step 0
+    nrows_g=150 nrows=8 sparsity=1.1949 nnzs=26886, refcount: 8>
+  <dData2D:DM n=26886 m=2, refcount: 1>
+refcount: 1>
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     783
+
+InitMesh: MESH = 30 x 80 x 40 = 96000
+InitMesh: Mesh cutoff (required, used) =   300.000   317.237 Ry
+New grid distribution [1]: sub = 2
+New grid distribution [2]: sub = 2
+New grid distribution [3]: sub = 2
+Setting up quadratic distribution...
+
+stepf: Fermi-Dirac step function
+
+siesta: Program's energy decomposition (eV):
+siesta: Ebs     =     -3565.339551
+siesta: Eions   =     24069.991265
+siesta: Ena     =      2495.792899
+siesta: Ekin    =      7671.730741
+siesta: Enl     =     -1095.521232
+siesta: Eso     =         0.000000
+siesta: Edftu   =         0.000000
+siesta: DEna    =       186.828205
+siesta: DUscf   =         6.090595
+siesta: DUext   =         0.000000
+siesta: Ex      =     -2769.020317
+siesta: Ec      =      -172.982023
+siesta: Exc     =     -2942.002340
+siesta: EbV     =         0.000000
+siesta: eta*DQ  =         0.000000
+siesta: Emadel  =         0.000000
+siesta: Emeta   =         0.000000
+siesta: Emolmec =         0.000000
+siesta: Ekinion =         0.000000
+siesta: Eharris =    -17650.809189
+siesta: Etot    =    -17747.072397
+siesta: FreeEng =    -17747.089124
+
+        iscf     Eharris(eV)        E_KS(eV)     FreeEng(eV)     dDmax    Ef(eV) dHmax(eV)
+   scf:    1   -17650.809189   -17747.072397   -17747.089124  3.074837 -5.930336  9.309966
+     spin moment: {S} , |S| = {        0.0        0.0    0.00011 }     0.00011
+timer: Routine,Calls,Time,% = IterSCF        1       2.465  31.21
+   scf:    2   -17747.486779   -17748.398411   -17748.414556  0.466198 -6.081734  7.189990
+     spin moment: {S} , |S| = {        0.0        0.0    0.00006 }     0.00006
+   scf:    3   -17749.553263   -17749.215259   -17749.231050  0.198565 -6.179947  4.252005
+     spin moment: {S} , |S| = {        0.0        0.0    0.00007 }     0.00007
+   scf:    4   -17751.934326   -17750.786620   -17750.804966  0.923414 -6.709519  2.291624
+     spin moment: {S} , |S| = {        0.0        0.0    0.00011 }     0.00011
+   scf:    5   -17751.695831   -17751.311749   -17751.329839  0.393462 -7.016277  0.764846
+     spin moment: {S} , |S| = {        0.0        0.0    0.00005 }     0.00005
+   scf:    6   -17748.131220   -17750.529143   -17750.551448  0.368711 -7.163806  5.667899
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00089 }    -0.00089
+   scf:    7   -17754.105214   -17752.920698   -17752.944210  0.409986 -7.392816  2.463604
+     spin moment: {S} , |S| = {        0.0        0.0    0.00336 }     0.00336
+   scf:    8   -17753.295124   -17753.124474   -17753.148685  0.069423 -7.448522  1.414134
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00001 }    -0.00001
+   scf:    9   -17753.383578   -17753.266195   -17753.289021  0.097212 -7.490511  0.441744
+     spin moment: {S} , |S| = {        0.0        0.0    0.00036 }     0.00036
+   scf:   10   -17753.094397   -17753.213634   -17753.233975  0.065571 -7.495848  1.492750
+     spin moment: {S} , |S| = {        0.0        0.0    0.00009 }     0.00009
+   scf:   11   -17753.207029   -17753.210346   -17753.230668  0.000677 -7.495791  1.515464
+     spin moment: {S} , |S| = {        0.0        0.0    0.00009 }     0.00009
+   scf:   12   -17753.394440   -17753.346675   -17753.366484  0.077253 -7.535460  0.387834
+     spin moment: {S} , |S| = {        0.0        0.0    0.00008 }     0.00008
+   scf:   13   -17752.131024   -17752.954437   -17752.974151  0.090730 -7.474195  2.608592
+     spin moment: {S} , |S| = {        0.0        0.0    0.00030 }     0.00030
+   scf:   14   -17753.159116   -17753.103779   -17753.126970  0.109879 -7.481887  1.927754
+     spin moment: {S} , |S| = {        0.0        0.0    0.00025 }     0.00025
+   scf:   15   -17752.650684   -17752.913763   -17752.934206  0.059578 -7.465958  2.933354
+     spin moment: {S} , |S| = {        0.0        0.0    0.00031 }     0.00031
+   scf:   16   -17753.677391   -17753.386308   -17753.406005  0.140381 -7.530284  0.607990
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00018 }    -0.00018
+   scf:   17   -17753.536641   -17753.449158   -17753.469933  0.074341 -7.547240  0.147111
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00081 }    -0.00081
+   scf:   18   -17753.582055   -17753.492511   -17753.515280  0.075712 -7.548364  0.199968
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00151 }    -0.00151
+   scf:   19   -17753.499620   -17753.497569   -17753.520291  0.018166 -7.538967  0.244996
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00130 }    -0.00130
+   scf:   20   -17753.508632   -17753.503312   -17753.526299  0.017164 -7.543651  0.124478
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00171 }    -0.00171
+   scf:   21   -17753.546557   -17753.513074   -17753.536327  0.096654 -7.556580  0.582210
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00191 }    -0.00191
+   scf:   22   -17753.517677   -17753.519533   -17753.543177  0.036068 -7.543440  0.139300
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00174 }    -0.00174
+   scf:   23   -17753.532137   -17753.525142   -17753.548597  0.020704 -7.540829  0.169416
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00220 }    -0.00220
+   scf:   24   -17753.557810   -17753.537395   -17753.559242  0.040901 -7.535368  0.118115
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00185 }    -0.00185
+   scf:   25   -17753.556121   -17753.545094   -17753.565681  0.026593 -7.533520  0.115803
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00204 }    -0.00204
+   scf:   26   -17753.546169   -17753.545651   -17753.566565  0.007730 -7.530725  0.093767
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00214 }    -0.00214
+   scf:   27   -17753.563538   -17753.553077   -17753.573072  0.032245 -7.532006  0.068866
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00181 }    -0.00181
+   scf:   28   -17753.564829   -17753.557943   -17753.577315  0.022106 -7.534243  0.077419
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00217 }    -0.00217
+   scf:   29   -17753.566862   -17753.561679   -17753.580963  0.025278 -7.535640  0.072949
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00186 }    -0.00186
+   scf:   30   -17753.564375   -17753.562929   -17753.582098  0.007012 -7.536785  0.058334
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00186 }    -0.00186
+   scf:   31   -17753.565031   -17753.563923   -17753.583157  0.007757 -7.537508  0.058861
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00192 }    -0.00192
+   scf:   32   -17753.566552   -17753.565151   -17753.584618  0.010507 -7.538733  0.063831
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00182 }    -0.00182
+   scf:   33   -17753.571430   -17753.567805   -17753.587588  0.020045 -7.540690  0.067162
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00192 }    -0.00192
+   scf:   34   -17753.566315   -17753.566951   -17753.586744  0.008090 -7.539273  0.063081
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00191 }    -0.00191
+   scf:   35   -17753.572230   -17753.569218   -17753.589391  0.018689 -7.540926  0.055598
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00191 }    -0.00191
+   scf:   36   -17753.568283   -17753.568733   -17753.588779  0.004369 -7.540845  0.058396
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00191 }    -0.00191
+   scf:   37   -17753.569669   -17753.569188   -17753.589310  0.003368 -7.541225  0.058134
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00190 }    -0.00190
+   scf:   38   -17753.571267   -17753.570156   -17753.590497  0.007030 -7.541927  0.054369
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00196 }    -0.00196
+   scf:   39   -17753.572400   -17753.571199   -17753.591768  0.009412 -7.542827  0.058863
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00198 }    -0.00198
+   scf:   40   -17753.567776   -17753.569178   -17753.589328  0.018312 -7.540920  0.051527
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00195 }    -0.00195
+   scf:   41   -17753.563817   -17753.565767   -17753.585315  0.027362 -7.538014  0.066305
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00195 }    -0.00195
+   scf:   42   -17753.570768   -17753.567936   -17753.587812  0.017834 -7.540057  0.072229
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00200 }    -0.00200
+   scf:   43   -17753.574619   -17753.570567   -17753.590905  0.024666 -7.542680  0.100703
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00204 }    -0.00204
+   scf:   44   -17753.568829   -17753.569602   -17753.589597  0.011303 -7.542307  0.093877
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00214 }    -0.00214
+   scf:   45   -17753.569986   -17753.569792   -17753.589835  0.001957 -7.542466  0.087997
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00212 }    -0.00212
+   scf:   46   -17753.573364   -17753.571387   -17753.591805  0.012702 -7.543875  0.107981
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00211 }    -0.00211
+   scf:   47   -17753.567354   -17753.568896   -17753.588928  0.021663 -7.541171  0.063663
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00184 }    -0.00184
+   scf:   48   -17753.572134   -17753.570366   -17753.590718  0.012624 -7.542547  0.059672
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00198 }    -0.00198
+   scf:   49   -17753.566193   -17753.567849   -17753.587717  0.020781 -7.540331  0.053522
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00190 }    -0.00190
+   scf:   50   -17753.564219   -17753.565758   -17753.585298  0.016465 -7.538676  0.059902
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00188 }    -0.00188
+   scf:   51   -17753.576692   -17753.570023   -17753.590264  0.033871 -7.542197  0.063264
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00204 }    -0.00204
+   scf:   52   -17753.574712   -17753.572052   -17753.592678  0.017858 -7.543566  0.082333
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00215 }    -0.00215
+   scf:   53   -17753.568178   -17753.569706   -17753.589808  0.020926 -7.542185  0.076016
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00206 }    -0.00206
+   scf:   54   -17753.569988   -17753.569840   -17753.589954  0.001666 -7.542376  0.077044
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00208 }    -0.00208
+   scf:   55   -17753.571405   -17753.570584   -17753.590901  0.006931 -7.542724  0.067543
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00207 }    -0.00207
+   scf:   56   -17753.567521   -17753.568785   -17753.588733  0.016218 -7.541578  0.067325
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00188 }    -0.00188
+   scf:   57   -17753.571526   -17753.570043   -17753.590294  0.011365 -7.542838  0.065714
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00196 }    -0.00196
+   scf:   58   -17753.564892   -17753.566755   -17753.586435  0.026581 -7.539629  0.058608
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00182 }    -0.00182
+   scf:   59   -17753.564358   -17753.565451   -17753.584961  0.010033 -7.538647  0.061757
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00183 }    -0.00183
+   scf:   60   -17753.577277   -17753.570016   -17753.590265  0.036131 -7.542609  0.062748
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00203 }    -0.00203
+   scf:   61   -17753.570419   -17753.570213   -17753.590512  0.001352 -7.542646  0.061863
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00203 }    -0.00203
+   scf:   62   -17753.569890   -17753.570050   -17753.590308  0.001181 -7.542550  0.061413
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00203 }    -0.00203
+   scf:   63   -17753.569703   -17753.569867   -17753.590066  0.002312 -7.542484  0.061326
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00203 }    -0.00203
+   scf:   64   -17753.573427   -17753.571447   -17753.591953  0.013875 -7.543676  0.066115
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00213 }    -0.00213
+   scf:   65   -17753.567298   -17753.568776   -17753.588835  0.023015 -7.541580  0.060420
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00186 }    -0.00186
+   scf:   66   -17753.567923   -17753.568338   -17753.588335  0.003112 -7.541313  0.062007
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00188 }    -0.00188
+   scf:   67   -17753.564590   -17753.566147   -17753.585711  0.017792 -7.539549  0.063393
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00179 }    -0.00179
+   scf:   68   -17753.566364   -17753.566254   -17753.585808  0.000660 -7.539663  0.062577
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00181 }    -0.00181
+   scf:   69   -17753.565074   -17753.565634   -17753.585029  0.005105 -7.539357  0.065375
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00179 }    -0.00179
+   scf:   70   -17753.566223   -17753.565914   -17753.585424  0.002391 -7.539328  0.064721
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00180 }    -0.00180
+   scf:   71   -17753.566488   -17753.566164   -17753.585821  0.004091 -7.539291  0.063527
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00180 }    -0.00180
+   scf:   72   -17753.565594   -17753.565858   -17753.585384  0.002883 -7.538968  0.062186
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00180 }    -0.00180
+   scf:   73   -17753.571771   -17753.568373   -17753.588195  0.019709 -7.541041  0.050514
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00192 }    -0.00192
+   scf:   74   -17753.569316   -17753.568799   -17753.588578  0.003678 -7.541478  0.050090
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00196 }    -0.00196
+   scf:   75   -17753.573478   -17753.570711   -17753.590804  0.017729 -7.543341  0.054828
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00209 }    -0.00209
+   scf:   76   -17753.573859   -17753.572101   -17753.592492  0.012859 -7.544627  0.059251
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00215 }    -0.00215
+   scf:   77   -17753.565881   -17753.566972   -17753.586121  0.044031 -7.540188  0.084102
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00185 }    -0.00185
+   scf:   78   -17753.561354   -17753.563155   -17753.581607  0.027236 -7.537515  0.109875
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00185 }    -0.00185
+   scf:   79   -17753.566039   -17753.564482   -17753.583076  0.010276 -7.538934  0.103405
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00195 }    -0.00195
+   scf:   80   -17753.564657   -17753.564569   -17753.583177  0.000597 -7.539010  0.102954
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00195 }    -0.00195
+   scf:   81   -17753.565928   -17753.565217   -17753.583948  0.004464 -7.539556  0.100472
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00198 }    -0.00198
+   scf:   82   -17753.574165   -17753.568449   -17753.588186  0.024789 -7.541703  0.081242
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00200 }    -0.00200
+   scf:   83   -17753.568133   -17753.568191   -17753.587687  0.005967 -7.541652  0.079705
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00205 }    -0.00205
+   scf:   84   -17753.572057   -17753.569722   -17753.589498  0.016183 -7.543411  0.082448
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00221 }    -0.00221
+   scf:   85   -17753.576789   -17753.572353   -17753.592735  0.026524 -7.546216  0.075376
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00244 }    -0.00244
+   scf:   86   -17753.567293   -17753.565511   -17753.584160  0.063355 -7.539274  0.092164
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00189 }    -0.00189
+   scf:   87   -17753.558776   -17753.561004   -17753.579161  0.029642 -7.536507  0.135685
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00184 }    -0.00184
+   scf:   88   -17753.558385   -17753.559590   -17753.577679  0.008517 -7.535756  0.148666
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00179 }    -0.00179
+   scf:   89   -17753.553051   -17753.555176   -17753.573410  0.023083 -7.535369  0.187167
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00177 }    -0.00177
+   scf:   90   -17753.555919   -17753.555524   -17753.573732  0.002821 -7.535204  0.181148
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00172 }    -0.00172
+   scf:   91   -17753.612536   -17753.569872   -17753.589938  0.091308 -7.542429  0.074073
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00206 }    -0.00206
+   scf:   92   -17753.570019   -17753.569820   -17753.589751  0.006392 -7.542721  0.075062
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00212 }    -0.00212
+   scf:   93   -17753.570521   -17753.570107   -17753.589983  0.004052 -7.542568  0.066772
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00209 }    -0.00209
+   scf:   94   -17753.572912   -17753.571278   -17753.591395  0.012573 -7.544008  0.062479
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00222 }    -0.00222
+   scf:   95   -17753.576753   -17753.573510   -17753.594339  0.018435 -7.545147  0.078678
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00211 }    -0.00211
+   scf:   96   -17753.567888   -17753.568353   -17753.587607  0.044692 -7.541469  0.071225
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00182 }    -0.00182
+   scf:   97   -17753.561163   -17753.538581   -17753.559317  0.140090 -7.533564  0.388805
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00206 }    -0.00206
+   scf:   98   -17753.560938   -17753.548732   -17753.567897  0.033137 -7.534224  0.252215
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00203 }    -0.00203
+   scf:   99   -17753.550214   -17753.549441   -17753.568487  0.005164 -7.534349  0.249939
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00189 }    -0.00189
+   scf:  100   -17753.550115   -17753.547908   -17753.567326  0.026855 -7.534739  0.276022
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00179 }    -0.00179
+   scf:  101   -17753.572981   -17753.554303   -17753.572724  0.047957 -7.534487  0.206018
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00139 }    -0.00139
+   scf:  102   -17753.559384   -17753.556386   -17753.574611  0.014816 -7.535054  0.194298
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00142 }    -0.00142
+   scf:  103   -17753.592411   -17753.567292   -17753.586378  0.075732 -7.541662  0.110939
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00218 }    -0.00218
+   scf:  104   -17753.602803   -17753.577104   -17753.598780  0.083392 -7.548791  0.134223
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00214 }    -0.00214
+   scf:  105   -17753.630252   -17753.524488   -17753.547044  0.245472 -7.533804  0.598043
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00198 }    -0.00198
+   scf:  106   -17753.539373   -17753.530678   -17753.552247  0.025485 -7.532802  0.521372
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00153 }    -0.00153
+   scf:  107   -17753.550906   -17753.540282   -17753.560720  0.027287 -7.533229  0.397710
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00170 }    -0.00170
+   scf:  108   -17753.531094   -17753.535243   -17753.556419  0.022706 -7.533675  0.449748
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00232 }    -0.00232
+   scf:  109   -17753.529501   -17753.527398   -17753.549813  0.049206 -7.533918  0.568466
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00220 }    -0.00220
+   scf:  110   -17753.550852   -17753.538607   -17753.559599  0.028355 -7.534090  0.418218
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00206 }    -0.00206
+   scf:  111   -17753.583744   -17753.555207   -17753.573560  0.079430 -7.536529  0.231437
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00164 }    -0.00164
+   scf:  112   -17753.625677   -17753.570095   -17753.591082  0.123536 -7.549555  0.151601
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00291 }    -0.00291
+   scf:  113   -17753.580604   -17753.551454   -17753.569976  0.125773 -7.535547  0.295215
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00241 }    -0.00241
+   scf:  114   -17753.533347   -17753.540026   -17753.560391  0.051585 -7.533760  0.433765
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00222 }    -0.00222
+   scf:  115   -17753.538009   -17753.538978   -17753.559499  0.005467 -7.533890  0.446796
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00180 }    -0.00180
+   scf:  116   -17753.558521   -17753.547754   -17753.566907  0.029088 -7.535205  0.341259
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00151 }    -0.00151
+   scf:  117   -17753.557062   -17753.551847   -17753.570463  0.026511 -7.536938  0.291517
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00118 }    -0.00118
+   scf:  118   -17753.555584   -17753.553556   -17753.572051  0.014066 -7.538153  0.275670
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00095 }    -0.00095
+   scf:  119   -17753.553172   -17753.553343   -17753.571844  0.003358 -7.538003  0.272886
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00105 }    -0.00105
+   scf:  120   -17753.554575   -17753.552370   -17753.570862  0.026204 -7.537665  0.254884
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00149 }    -0.00149
+   scf:  121   -17753.575772   -17753.560202   -17753.579043  0.053191 -7.543745  0.176038
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00152 }    -0.00152
+   scf:  122   -17753.560814   -17753.560501   -17753.579424  0.002665 -7.544104  0.171014
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00155 }    -0.00155
+   scf:  123   -17753.559734   -17753.560104   -17753.578962  0.002269 -7.543809  0.171554
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00149 }    -0.00149
+   scf:  124   -17753.569870   -17753.562537   -17753.582655  0.047560 -7.548604  0.214623
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00145 }    -0.00145
+   scf:  125   -17753.581530   -17753.555426   -17753.573692  0.122782 -7.538519  0.190862
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00183 }    -0.00183
+   scf:  126   -17753.559993   -17753.557602   -17753.575684  0.012470 -7.540120  0.147389
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00167 }    -0.00167
+   scf:  127   -17753.553152   -17753.555059   -17753.573355  0.010868 -7.538705  0.179939
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00191 }    -0.00191
+   scf:  128   -17753.556787   -17753.555848   -17753.574068  0.005752 -7.539003  0.173821
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00181 }    -0.00181
+   scf:  129   -17753.552714   -17753.553891   -17753.572338  0.015397 -7.539275  0.180378
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00161 }    -0.00161
+   scf:  130   -17753.551382   -17753.551007   -17753.569884  0.029544 -7.538029  0.233632
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00123 }    -0.00123
+   scf:  131   -17753.553372   -17753.551355   -17753.570173  0.020196 -7.538489  0.246511
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00142 }    -0.00142
+   scf:  132   -17753.581385   -17753.560462   -17753.578656  0.069398 -7.543987  0.173648
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00168 }    -0.00168
+   scf:  133   -17753.565859   -17753.561524   -17753.580472  0.038334 -7.547138  0.183899
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00127 }    -0.00127
+   scf:  134   -17753.560018   -17753.559582   -17753.577772  0.034225 -7.544072  0.172248
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00160 }    -0.00160
+   scf:  135   -17753.573182   -17753.563892   -17753.582583  0.036652 -7.545976  0.144971
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00163 }    -0.00163
+   scf:  136   -17753.568546   -17753.565001   -17753.584181  0.026089 -7.548029  0.095675
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00238 }    -0.00238
+   scf:  137   -17753.558605   -17753.559749   -17753.577998  0.039548 -7.543493  0.204044
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00132 }    -0.00132
+   scf:  138   -17753.612317   -17753.571650   -17753.593179  0.108010 -7.554019  0.049960
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00373 }    -0.00373
+   scf:  139   -17753.574488   -17753.571296   -17753.592356  0.036022 -7.552448  0.068402
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00315 }    -0.00315
+   scf:  140   -17753.582933   -17753.562249   -17753.580387  0.108290 -7.544390  0.265953
+     spin moment: {S} , |S| = {        0.0        0.0    0.00002 }     0.00002
+   scf:  141   -17753.525805   -17753.488856   -17753.512535  0.186657 -7.539917  1.035265
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00020 }    -0.00020
+   scf:  142   -17753.480249   -17753.484514   -17753.508128  0.009464 -7.540082  1.078511
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00027 }    -0.00027
+   scf:  143   -17753.666387   -17753.552243   -17753.570564  0.174949 -7.539560  0.286336
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00201 }    -0.00201
+   scf:  144   -17753.581955   -17753.563346   -17753.581774  0.061848 -7.545561  0.064955
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00246 }    -0.00246
+   scf:  145   -17753.560553   -17753.556983   -17753.575033  0.057188 -7.540470  0.065538
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00121 }    -0.00121
+   scf:  146   -17753.590805   -17753.565292   -17753.584501  0.082415 -7.548635  0.242533
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00169 }    -0.00169
+   scf:  147   -17753.565223   -17753.556545   -17753.574409  0.058384 -7.540346  0.219954
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00228 }    -0.00228
+   scf:  148   -17753.553794   -17753.554490   -17753.572630  0.021910 -7.538290  0.158213
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00227 }    -0.00227
+   scf:  149   -17753.556327   -17753.555027   -17753.573121  0.013963 -7.538727  0.153932
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00201 }    -0.00201
+   scf:  150   -17753.575755   -17753.536067   -17753.557992  0.163022 -7.536650  0.402665
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00287 }    -0.00287
+   scf:  151   -17753.552246   -17753.540629   -17753.562743  0.054077 -7.534870  0.161794
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00335 }    -0.00335
+   scf:  152   -17753.554761   -17753.545994   -17753.566381  0.044715 -7.534245  0.108512
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00344 }    -0.00344
+   scf:  153   -17753.558173   -17753.550124   -17753.568669  0.045738 -7.534532  0.258401
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00392 }    -0.00392
+   scf:  154   -17753.544360   -17753.544832   -17753.565883  0.057892 -7.533799  0.047147
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00388 }    -0.00388
+   scf:  155   -17753.550866   -17753.547439   -17753.567617  0.020865 -7.533647  0.080925
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00399 }    -0.00399
+   scf:  156   -17753.551360   -17753.549163   -17753.568754  0.014443 -7.533534  0.110510
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00416 }    -0.00416
+   scf:  157   -17753.548304   -17753.546554   -17753.566976  0.036704 -7.532278  0.048133
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00533 }    -0.00533
+   scf:  158   -17753.546803   -17753.546571   -17753.566966  0.008102 -7.532216  0.037366
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00554 }    -0.00554
+   scf:  159   -17753.549026   -17753.547076   -17753.567367  0.023887 -7.532174  0.040881
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00642 }    -0.00642
+   scf:  160   -17753.548445   -17753.547725   -17753.567758  0.007902 -7.531976  0.029419
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00668 }    -0.00668
+   scf:  161   -17753.547949   -17753.547739   -17753.567789  0.008623 -7.532126  0.019302
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00684 }    -0.00684
+   scf:  162   -17753.547824   -17753.547698   -17753.567794  0.007375 -7.532308  0.013240
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00689 }    -0.00689
+   scf:  163   -17753.547586   -17753.547628   -17753.567768  0.002791 -7.532238  0.015881
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00686 }    -0.00686
+   scf:  164   -17753.547242   -17753.547424   -17753.567660  0.002342 -7.532253  0.017900
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00683 }    -0.00683
+   scf:  165   -17753.547672   -17753.547539   -17753.567739  0.003428 -7.532161  0.013618
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00691 }    -0.00691
+   scf:  166   -17753.547547   -17753.547540   -17753.567749  0.001476 -7.532140  0.014012
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00693 }    -0.00693
+   scf:  167   -17753.547887   -17753.547704   -17753.567861  0.002878 -7.532129  0.010804
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00710 }    -0.00710
+   scf:  168   -17753.548603   -17753.548109   -17753.568119  0.005180 -7.532024  0.010243
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00740 }    -0.00740
+   scf:  169   -17753.548932   -17753.548484   -17753.568355  0.003501 -7.531969  0.010502
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00773 }    -0.00773
+   scf:  170   -17753.548997   -17753.548717   -17753.568498  0.004114 -7.531925  0.010147
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00792 }    -0.00792
+   scf:  171   -17753.549710   -17753.549124   -17753.568749  0.008827 -7.531904  0.010613
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00825 }    -0.00825
+   scf:  172   -17753.550125   -17753.549547   -17753.569010  0.008335 -7.531959  0.011277
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00864 }    -0.00864
+   scf:  173   -17753.550190   -17753.549831   -17753.569194  0.005417 -7.532090  0.012111
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00905 }    -0.00905
+   scf:  174   -17753.550196   -17753.549998   -17753.569300  0.003261 -7.532178  0.009688
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00932 }    -0.00932
+   scf:  175   -17753.550194   -17753.550088   -17753.569359  0.002478 -7.532267  0.009640
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00954 }    -0.00954
+   scf:  176   -17753.550466   -17753.550259   -17753.569466  0.003901 -7.532347  0.009120
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00981 }    -0.00981
+   scf:  177   -17753.550765   -17753.550476   -17753.569600  0.004584 -7.532483  0.008321
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01024 }    -0.01024
+   scf:  178   -17753.551509   -17753.550861   -17753.569834  0.009885 -7.532675  0.007616
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01103 }    -0.01103
+   scf:  179   -17753.551544   -17753.551118   -17753.569989  0.008058 -7.532799  0.006592
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01164 }    -0.01164
+   scf:  180   -17753.551258   -17753.551182   -17753.570027  0.002223 -7.532799  0.005444
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01180 }    -0.01180
+   scf:  181   -17753.551343   -17753.551254   -17753.570069  0.002748 -7.532795  0.005584
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01199 }    -0.01199
+   scf:  182   -17753.551410   -17753.551326   -17753.570111  0.002556 -7.532740  0.005382
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01216 }    -0.01216
+   scf:  183   -17753.551498   -17753.551400   -17753.570155  0.003243 -7.532728  0.005014
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01243 }    -0.01243
+   scf:  184   -17753.551568   -17753.551472   -17753.570198  0.003268 -7.532703  0.004424
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01270 }    -0.01270
+   scf:  185   -17753.551548   -17753.551508   -17753.570219  0.001561 -7.532674  0.004387
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01283 }    -0.01283
+   scf:  186   -17753.551565   -17753.551535   -17753.570236  0.001203 -7.532658  0.004190
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01294 }    -0.01294
+   scf:  187   -17753.551560   -17753.551547   -17753.570244  0.000481 -7.532636  0.004429
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01298 }    -0.01298
+
+SCF Convergence by DM criterion
+max |DM_out - DM_in|         :     0.0004813424
+max |H_out - H_in|      (eV) :     0.0044286397
+SCF cycle converged after 187 iterations
+
+Using DM_out to compute the final energy and forces
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     783
+
+siesta: E_KS(eV) =           -17753.5515
+
+siesta: E_KS - E_eggbox =    -17753.5515
+
+siesta: Atomic forces (eV/Ang):
+     1    0.000000    0.000196    0.000000
+     2    0.000000    0.007135    0.000000
+     3    0.000000   -0.007614    0.000000
+     4    0.000000   -0.005822    0.000000
+     5   -0.000000   -0.000544    0.000000
+     6   -0.000000    0.006650   -0.000000
+----------------------------------------
+   Tot    0.000000    0.000002    0.000000
+----------------------------------------
+   Max    0.007614
+   Res    0.003226    sqrt( Sum f_i^2 / 3N )
+----------------------------------------
+   Max    0.007614    constrained
+
+Stress tensor Voigt[x,y,z,yz,xz,xy] (kbar):      145.75      144.69      132.41        0.00        0.00        0.00
+(Free)E + p*V (eV/cell)   -17759.3256
+Target enthalpy (eV/cell)   -17753.5702
+
+siesta: Stress tensor (static) (eV/Ang**3):
+         0.090971    0.000000    0.000000
+         0.000000    0.090307   -0.000000
+         0.000000    0.000000    0.082645
+
+siesta: Pressure (static):       -140.95031437  kBar
+
+siesta: Stress tensor (total) (eV/Ang**3):
+         0.090971    0.000000    0.000000
+         0.000000    0.090307   -0.000000
+         0.000000    0.000000    0.082645
+
+siesta: Pressure (total):       -140.95031437  kBar
+
+cgvc: No target stress found, assuming hydrostatic MD.TargetPressure.
+
+cgvc: Target stress (kBar)
+cgvc:        -0.000       0.000       0.000
+cgvc:         0.000      -0.000       0.000
+cgvc:         0.000       0.000      -0.000
+
+                     ====================================
+                        Begin CG opt. move =      1
+                     ====================================
+k-point displ. along   1 input, could be:     0.00    0.50
+k-point displ. along   2 input, could be:     0.00    0.50
+k-point displ. along   3 input, could be:     0.00    0.50
+ Kpoints in:           32 . Kpoints trimmed:           31
+
+siesta: k-grid: Number of k-points = 31
+siesta: k-points from Monkhorst-Pack grid
+siesta: k-cutoff (effective) =     6.959 Ang
+siesta: k-point supercell and displacements
+siesta: k-grid:     6     0     0      0.000
+siesta: k-grid:     0     2     0      0.000
+siesta: k-grid:     0     0     4      0.000
+
+superc: Internal auxiliary supercell:     9 x     5 x     7  =     315
+superc: Number of atoms, orbitals, and projectors:   1890  47250  34020
+
+outcell: Unit cell vectors (Ang):
+        2.457592   -0.000000   -0.000000
+       -0.000000    7.373463   -0.000000
+       -0.000000   -0.000000    3.479627
+
+outcell: Cell vector modules (Ang)   :    2.457592    7.373463    3.479627
+outcell: Cell angles (23,13,12) (deg):     90.0000     90.0000     90.0000
+outcell: Cell volume (Ang**3)        :     63.0542
+<dSpData1D:S at geom step 1
+  <sparsity:sparsity for geom step 1
+    nrows_g=150 nrows=8 sparsity=1.1949 nnzs=26886, refcount: 7>
+  <dData1D:(new from dSpData1D) n=26886, refcount: 1>
+refcount: 1>
+new_DM -- step:     2
+Re-using DM from previous geometries...
+Number of DMs in history: 1
+ DM extrapolation coefficients: 
+1   1.00000
+New DM after history re-use:
+<dSpData2D:SpM extrapolated using coords
+  <sparsity:sparsity for geom step 1
+    nrows_g=150 nrows=8 sparsity=1.1949 nnzs=26886, refcount: 9>
+  <dData2D:(temp array for extrapolation) n=26886 m=2, refcount: 1>
+refcount: 1>
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     783
+
+InitMesh: MESH = 30 x 80 x 40 = 96000
+InitMesh: Mesh cutoff (required, used) =   300.000   325.341 Ry
+New grid distribution [1]: sub = 2
+New grid distribution [2]: sub = 2
+New grid distribution [3]: sub = 2
+Setting up quadratic distribution...
+
+        iscf     Eharris(eV)        E_KS(eV)     FreeEng(eV)     dDmax    Ef(eV) dHmax(eV)
+   scf:    1   -17749.015866   -17753.680864   -17753.698498  0.107569 -7.614179  0.279291
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01226 }    -0.01226
+   scf:    2   -17753.368422   -17753.587002   -17753.604519  0.081606 -7.777367  1.192880
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01271 }    -0.01271
+   scf:    3   -17753.669562   -17753.687438   -17753.704980  0.073422 -7.643471  0.235678
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01208 }    -0.01208
+   scf:    4   -17753.691276   -17753.690805   -17753.708290  0.011882 -7.666664  0.090571
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01194 }    -0.01194
+   scf:    5   -17753.691471   -17753.691365   -17753.708826  0.004320 -7.674854  0.007916
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01188 }    -0.01188
+   scf:    6   -17753.691406   -17753.691385   -17753.708838  0.000561 -7.674973  0.006773
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01181 }    -0.01181
+   scf:    7   -17753.691475   -17753.691429   -17753.708865  0.001158 -7.675202  0.007118
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01166 }    -0.01166
+   scf:    8   -17753.691539   -17753.691482   -17753.708897  0.001445 -7.675449  0.006739
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01148 }    -0.01148
+   scf:    9   -17753.691556   -17753.691518   -17753.708919  0.000980 -7.675583  0.006080
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01135 }    -0.01135
+   scf:   10   -17753.691541   -17753.691529   -17753.708927  0.000338 -7.675613  0.006243
+     spin moment: {S} , |S| = {        0.0        0.0   -0.01131 }    -0.01131
+
+SCF Convergence by DM criterion
+max |DM_out - DM_in|         :     0.0003384850
+max |H_out - H_in|      (eV) :     0.0062429004
+SCF cycle converged after 10 iterations
+
+Using DM_out to compute the final energy and forces
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     783
+
+siesta: E_KS(eV) =           -17753.6915
+
+siesta: Atomic forces (eV/Ang):
+     1   -0.000000    0.000138   -0.000000
+     2   -0.000000   -0.016785   -0.000000
+     3   -0.000000    0.016661   -0.000000
+     4   -0.000000    0.017242   -0.000000
+     5   -0.000000   -0.000007    0.000000
+     6    0.000000   -0.017171    0.000000
+----------------------------------------
+   Tot   -0.000000    0.000078   -0.000000
+----------------------------------------
+   Max    0.017242
+   Res    0.007998    sqrt( Sum f_i^2 / 3N )
+----------------------------------------
+   Max    0.017242    constrained
+
+Stress tensor Voigt[x,y,z,yz,xz,xy] (kbar):       44.50       47.36       35.81       -0.00       -0.00       -0.00
+(Free)E + p*V (eV/cell)   -17755.3837
+Target enthalpy (eV/cell)   -17753.7089
+
+siesta: Stress tensor (static) (eV/Ang**3):
+         0.027772   -0.000000   -0.000000
+        -0.000000    0.029562    0.000000
+        -0.000000   -0.000000    0.022350
+
+siesta: Pressure (static):        -42.55585715  kBar
+
+siesta: Stress tensor (total) (eV/Ang**3):
+         0.027772   -0.000000   -0.000000
+        -0.000000    0.029562    0.000000
+        -0.000000   -0.000000    0.022350
+
+siesta: Pressure (total):        -42.55585715  kBar
+
+                     ====================================
+                        Begin CG opt. move =      2
+                     ====================================
+k-point displ. along   1 input, could be:     0.00    0.50
+k-point displ. along   2 input, could be:     0.00    0.50
+k-point displ. along   3 input, could be:     0.00    0.50
+ Kpoints in:           32 . Kpoints trimmed:           31
+
+siesta: k-grid: Number of k-points = 31
+siesta: k-points from Monkhorst-Pack grid
+siesta: k-cutoff (effective) =     6.830 Ang
+siesta: k-point supercell and displacements
+siesta: k-grid:     6     0     0      0.000
+siesta: k-grid:     0     2     0      0.000
+siesta: k-grid:     0     0     4      0.000
+
+superc: Internal auxiliary supercell:     9 x     5 x     7  =     315
+superc: Number of atoms, orbitals, and projectors:   1890  47250  34020
+
+outcell: Unit cell vectors (Ang):
+        2.407313   -0.000000   -0.000000
+       -0.000000    7.223727   -0.000000
+       -0.000000   -0.000000    3.415030
+
+outcell: Cell vector modules (Ang)   :    2.407313    7.223727    3.415030
+outcell: Cell angles (23,13,12) (deg):     90.0000     90.0000     90.0000
+outcell: Cell volume (Ang**3)        :     59.3866
+<dSpData1D:S at geom step 2
+  <sparsity:sparsity for geom step 2
+    nrows_g=150 nrows=8 sparsity=1.2988 nnzs=29222, refcount: 7>
+  <dData1D:(new from dSpData1D) n=29222, refcount: 1>
+refcount: 1>
+new_DM -- step:     3
+Re-using DM from previous geometries...
+Number of DMs in history: 1
+ DM extrapolation coefficients: 
+1   1.00000
+New DM after history re-use:
+<dSpData2D:SpM extrapolated using coords
+  <sparsity:sparsity for geom step 2
+    nrows_g=150 nrows=8 sparsity=1.2988 nnzs=29222, refcount: 9>
+  <dData2D:(temp array for extrapolation) n=29222 m=2, refcount: 1>
+refcount: 1>
+Note: For starting DM, Qtot, Tr[D*S] =         90.00000000         89.80369981
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     807
+
+InitMesh: MESH = 30 x 80 x 36 = 86400
+InitMesh: Mesh cutoff (required, used) =   300.000   307.127 Ry
+New grid distribution [1]: sub = 2
+New grid distribution [2]: sub = 2
+New grid distribution [3]: sub = 2
+Setting up quadratic distribution...
+
+        iscf     Eharris(eV)        E_KS(eV)     FreeEng(eV)     dDmax    Ef(eV) dHmax(eV)
+   scf:    1   -17744.150456   -17753.518042   -17753.533828  0.248502 -7.798929  0.547705
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00943 }    -0.00943
+   scf:    2   -17752.972118   -17753.373306   -17753.389312  0.210125 -8.125448  2.119329
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00824 }    -0.00824
+   scf:    3   -17753.496975   -17753.547507   -17753.563199  0.147612 -7.873694  0.547349
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00893 }    -0.00893
+   scf:    4   -17753.562900   -17753.560081   -17753.575744  0.036706 -7.923022  0.028826
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00855 }    -0.00855
+   scf:    5   -17753.560170   -17753.560154   -17753.575811  0.001484 -7.924668  0.009385
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00847 }    -0.00847
+   scf:    6   -17753.560278   -17753.560215   -17753.575845  0.001604 -7.925278  0.010367
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00805 }    -0.00805
+   scf:    7   -17753.560404   -17753.560305   -17753.575894  0.002425 -7.925861  0.009760
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00743 }    -0.00743
+   scf:    8   -17753.560416   -17753.560359   -17753.575923  0.001527 -7.926122  0.006202
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00704 }    -0.00704
+   scf:    9   -17753.560400   -17753.560380   -17753.575935  0.000625 -7.926180  0.006173
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00689 }    -0.00689
+   scf:   10   -17753.560411   -17753.560395   -17753.575944  0.000490 -7.926198  0.006248
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00678 }    -0.00678
+
+SCF Convergence by DM criterion
+max |DM_out - DM_in|         :     0.0004895949
+max |H_out - H_in|      (eV) :     0.0062484699
+SCF cycle converged after 10 iterations
+
+Using DM_out to compute the final energy and forces
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     807
+
+siesta: E_KS(eV) =           -17753.5604
+
+siesta: Atomic forces (eV/Ang):
+     1   -0.000000   -0.000139   -0.000000
+     2   -0.000000   -0.008430    0.000000
+     3   -0.000000    0.008733   -0.000000
+     4   -0.000000    0.007104    0.000000
+     5   -0.000000    0.001140   -0.000000
+     6   -0.000000   -0.008178   -0.000000
+----------------------------------------
+   Tot   -0.000000    0.000229    0.000000
+----------------------------------------
+   Max    0.008733
+   Res    0.003844    sqrt( Sum f_i^2 / 3N )
+----------------------------------------
+   Max    0.008733    constrained
+
+Stress tensor Voigt[x,y,z,yz,xz,xy] (kbar):     -161.60     -162.94     -173.84        0.00        0.00       -0.00
+(Free)E + p*V (eV/cell)   -17747.4182
+Target enthalpy (eV/cell)   -17753.5759
+
+siesta: Stress tensor (static) (eV/Ang**3):
+        -0.100864   -0.000000    0.000000
+        -0.000000   -0.101697    0.000000
+         0.000000    0.000000   -0.108505
+
+siesta: Pressure (static):        166.12756380  kBar
+
+siesta: Stress tensor (total) (eV/Ang**3):
+        -0.100864   -0.000000    0.000000
+        -0.000000   -0.101697    0.000000
+         0.000000    0.000000   -0.108505
+
+siesta: Pressure (total):        166.12756380  kBar
+
+                     ====================================
+                        Begin CG opt. move =      3
+                     ====================================
+k-point displ. along   1 input, could be:     0.00    0.50
+k-point displ. along   2 input, could be:     0.00    0.50
+k-point displ. along   3 input, could be:     0.00    0.50
+ Kpoints in:           32 . Kpoints trimmed:           31
+
+siesta: k-grid: Number of k-points = 31
+siesta: k-points from Monkhorst-Pack grid
+siesta: k-cutoff (effective) =     6.932 Ang
+siesta: k-point supercell and displacements
+siesta: k-grid:     6     0     0      0.000
+siesta: k-grid:     0     2     0      0.000
+siesta: k-grid:     0     0     4      0.000
+
+superc: Internal auxiliary supercell:     9 x     5 x     7  =     315
+superc: Number of atoms, orbitals, and projectors:   1890  47250  34020
+
+outcell: Unit cell vectors (Ang):
+        2.446793   -0.000000   -0.000000
+       -0.000000    7.341302   -0.000000
+       -0.000000   -0.000000    3.465752
+
+outcell: Cell vector modules (Ang)   :    2.446793    7.341302    3.465752
+outcell: Cell angles (23,13,12) (deg):     90.0000     90.0000     90.0000
+outcell: Cell volume (Ang**3)        :     62.2541
+<dSpData1D:S at geom step 3
+  <sparsity:sparsity for geom step 3
+    nrows_g=150 nrows=8 sparsity=1.1949 nnzs=26886, refcount: 7>
+  <dData1D:(new from dSpData1D) n=26886, refcount: 1>
+refcount: 1>
+new_DM -- step:     4
+Re-using DM from previous geometries...
+Number of DMs in history: 1
+ DM extrapolation coefficients: 
+1   1.00000
+New DM after history re-use:
+<dSpData2D:SpM extrapolated using coords
+  <sparsity:sparsity for geom step 3
+    nrows_g=150 nrows=8 sparsity=1.1949 nnzs=26886, refcount: 9>
+  <dData2D:(temp array for extrapolation) n=26886 m=2, refcount: 1>
+refcount: 1>
+Note: For starting DM, Qtot, Tr[D*S] =         90.00000000         90.20657013
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     783
+
+InitMesh: MESH = 30 x 80 x 40 = 96000
+InitMesh: Mesh cutoff (required, used) =   300.000   328.198 Ry
+New grid distribution [1]: sub = 2
+New grid distribution [2]: sub = 2
+New grid distribution [3]: sub = 2
+Setting up quadratic distribution...
+
+        iscf     Eharris(eV)        E_KS(eV)     FreeEng(eV)     dDmax    Ef(eV) dHmax(eV)
+   scf:    1   -17761.692406   -17753.646859   -17753.663526  0.186761 -7.871436  0.640578
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00605 }    -0.00605
+   scf:    2   -17752.848903   -17753.432943   -17753.450603  0.236360 -7.489067  2.530839
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00616 }    -0.00616
+   scf:    3   -17753.603323   -17753.684998   -17753.701650  0.203476 -7.785884  0.683464
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00593 }    -0.00593
+   scf:    4   -17753.707581   -17753.704275   -17753.720919  0.028595 -7.729430  0.039065
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00578 }    -0.00578
+   scf:    5   -17753.704371   -17753.704352   -17753.720992  0.001478 -7.728553  0.009534
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00572 }    -0.00572
+   scf:    6   -17753.704401   -17753.704376   -17753.721010  0.000525 -7.728526  0.008210
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00568 }    -0.00568
+   scf:    7   -17753.704461   -17753.704418   -17753.721041  0.000831 -7.728463  0.008068
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00560 }    -0.00560
+   scf:    8   -17753.704448   -17753.704433   -17753.721051  0.000277 -7.728437  0.007717
+     spin moment: {S} , |S| = {        0.0        0.0   -0.00558 }    -0.00558
+
+SCF Convergence by DM criterion
+max |DM_out - DM_in|         :     0.0002766617
+max |H_out - H_in|      (eV) :     0.0077165909
+SCF cycle converged after 8 iterations
+
+Using DM_out to compute the final energy and forces
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:      96     783
+
+siesta: E_KS(eV) =           -17753.7044
+
+siesta: Atomic forces (eV/Ang):
+     1    0.000000   -0.000008   -0.000000
+     2   -0.000000   -0.020193   -0.000000
+     3   -0.000000    0.020385   -0.000000
+     4   -0.000000    0.019385   -0.000000
+     5    0.000000    0.000492   -0.000000
+     6    0.000000   -0.020100    0.000000
+----------------------------------------
+   Tot   -0.000000   -0.000038   -0.000000
+----------------------------------------
+   Max    0.020385
+   Res    0.009438    sqrt( Sum f_i^2 / 3N )
+----------------------------------------
+   Max    0.020385    constrained
+
+Stress tensor Voigt[x,y,z,yz,xz,xy] (kbar):        3.61        5.99       -4.73       -0.00       -0.00        0.00
+(Free)E + p*V (eV/cell)   -17753.7841
+Target enthalpy (eV/cell)   -17753.7211
+
+siesta: Stress tensor (static) (eV/Ang**3):
+         0.002253    0.000000   -0.000000
+         0.000000    0.003739    0.000000
+        -0.000000   -0.000000   -0.002953
+
+siesta: Pressure (static):         -1.62249982  kBar
+
+siesta: Stress tensor (total) (eV/Ang**3):
+         0.002253    0.000000   -0.000000
+         0.000000    0.003739    0.000000
+        -0.000000   -0.000000   -0.002953
+
+siesta: Pressure (total):         -1.62249982  kBar
+
+outcoor: Relaxed atomic coordinates (fractional):           
+    0.00000000    0.00000187    0.00000000   1       1  Mn
+    0.00000000    0.33340142    0.00000000   1       2  Mn
+    0.00000000    0.66659401    0.00000000   1       3  Mn
+    0.50000000    0.16661110    0.50000000   1       4  Mn
+    0.50000000    0.49999481    0.50000000   1       5  Mn
+    0.50000000    0.83339680    0.50000000   1       6  Mn
+
+outcell: Unit cell vectors (Ang):
+        2.446793   -0.000000   -0.000000
+       -0.000000    7.341302   -0.000000
+       -0.000000   -0.000000    3.465752
+
+outcell: Cell vector modules (Ang)   :    2.446793    7.341302    3.465752
+outcell: Cell angles (23,13,12) (deg):     90.0000     90.0000     90.0000
+outcell: Cell volume (Ang**3)        :     62.2541
+
+coxmol: Writing XMOL coordinates into file hea.xyz                                                                                                                                                                                                                             
+Writing WFSX for COOP/COHP in hea.fullBZ.WFSX
+
+diag: Algorithm                                     = D&C
+diag: Parallel over k                               =   F
+diag: Use parallel 2D distribution                  =   T
+diag: Parallel block-size                           = 4
+diag: Parallel distribution                         =     6 x     6
+diag: Used triangular part                          = Lower
+diag: Absolute tolerance                            =  0.100E-15
+diag: Orthogonalization factor                      =  0.100E-05
+diag: Memory factor                                 =  1.0000
+
+diag: Algorithm                                     = D&C
+diag: Parallel over k                               =   F
+diag: Use parallel 2D distribution                  =   T
+diag: Parallel block-size                           = 4
+diag: Parallel distribution                         =     6 x     6
+diag: Used triangular part                          = Lower
+diag: Absolute tolerance                            =  0.100E-15
+diag: Orthogonalization factor                      =  0.100E-05
+diag: Memory factor                                 =  1.0000
+
+siesta: PDOS info
+siesta: E1 -- E2, sigma [eV], nhist:  -20.000 --   20.000    0.100 1000
+
+diag: Algorithm                                     = D&C
+diag: Parallel over k                               =   F
+diag: Use parallel 2D distribution                  =   T
+diag: Parallel block-size                           = 4
+diag: Parallel distribution                         =     6 x     6
+diag: Used triangular part                          = Lower
+diag: Absolute tolerance                            =  0.100E-15
+diag: Orthogonalization factor                      =  0.100E-05
+diag: Memory factor                                 =  1.0000
+
+siesta: Program's energy decomposition (eV):
+siesta: Ebs     =     -3473.243557
+siesta: Eions   =     24069.991265
+siesta: Ena     =      2488.637962
+siesta: Ekin    =      7803.679566
+siesta: Enl     =     -1128.445584
+siesta: Eso     =         0.000000
+siesta: Edftu   =         0.000000
+siesta: DEna    =       103.720703
+siesta: DUscf   =         1.675514
+siesta: DUext   =         0.000000
+siesta: Ex      =     -2777.565760
+siesta: Ec      =      -175.415568
+siesta: Exc     =     -2952.981329
+siesta: EbV     =         0.000000
+siesta: eta*DQ  =         0.000000
+siesta: Emadel  =         0.000000
+siesta: Emeta   =         0.000000
+siesta: Emolmec =         0.000000
+siesta: Ekinion =         0.000000
+siesta: Eharris =    -17753.704448
+siesta: Etot    =    -17753.704433
+siesta: FreeEng =    -17753.721051
+
+siesta: Final energy (eV):
+siesta:  Band Struct. =   -3473.243557
+siesta:       Kinetic =    7803.679566
+siesta:       Hartree =    3676.383119
+siesta:         Edftu =       0.000000
+siesta:       Eso     =       0.000000
+siesta:    Ext. field =       0.000000
+siesta:         Exch. =   -2777.565760
+siesta:         Corr. =    -175.415568
+siesta:     Bulk bias =       0.000000
+siesta:   Exch.-corr. =   -2952.981329
+siesta:  Ion-electron =  -16008.258987
+siesta:       Ion-ion =  -10272.526802
+siesta:       Ekinion =       0.000000
+siesta: D3 dispersion =       0.000000
+siesta:         Total =  -17753.704433
+siesta:         Fermi =      -7.728437
+
+siesta: Stress tensor (static) (eV/Ang**3):
+siesta:     0.002253    0.000000   -0.000000
+siesta:     0.000000    0.003739    0.000000
+siesta:    -0.000000   -0.000000   -0.002953
+
+siesta: Constrained stress tensor (static) (eV/Ang**3):
+siesta:     0.002253    0.000000   -0.000000
+siesta:     0.000000    0.003739   -0.000000
+siesta:    -0.000000   -0.000000   -0.002953
+
+siesta: Cell volume =         62.254079 Ang**3
+
+siesta: Pressure (static):
+siesta:                Solid            Molecule  Units
+siesta:          -0.00001103         -0.00000829  Ry/Bohr**3
+siesta:          -0.00101268         -0.00076098  eV/Ang**3
+siesta:          -1.62249982         -1.21923170  kBar
+(Free)E+ p_basis*V_orbitals  =      -17732.894178
+(Free)Eharris+ p_basis*V_orbitals  =      -17732.894193
+
+mulliken: Atomic and Orbital Populations:
+
+mulliken: Spin UP 
+
+Species: Mn                  
+Atom  Qatom  Qorb
+               3s      4s      4s      4s      3py     3pz     3px     4py     
+               4pz     4px     3dxy    3dyz    3dz2    3dxz    3dx2-y2 3dxy    
+               3dyz    3dz2    3dxz    3dx2-y2 3dxy    3dyz    3dz2    3dxz    
+               3dx2-y2 
+   1  7.534   0.985   0.015   0.074  -0.012   0.989   0.990   0.990   0.171
+              0.174   0.170   0.826   1.040   0.773   1.041   1.015  -0.073
+
+             -0.111  -0.066  -0.111  -0.107  -0.198  -0.290  -0.179  -0.290
+
+             -0.281
+   2  7.522   0.985   0.013   0.075  -0.012   0.990   0.990   0.990   0.170
+              0.173   0.170   0.819   1.037   0.770   1.037   1.019  -0.072
+
+             -0.111  -0.065  -0.110  -0.108  -0.196  -0.289  -0.179  -0.289
+
+             -0.284
+   3  7.527   0.985   0.012   0.075  -0.012   0.990   0.990   0.990   0.170
+              0.173   0.170   0.822   1.039   0.772   1.038   1.019  -0.072
+
+             -0.111  -0.066  -0.111  -0.108  -0.197  -0.289  -0.180  -0.289
+
+             -0.284
+   4  7.473   0.984   0.015   0.074  -0.012   0.990   0.989   0.990   0.169
+              0.172   0.169   0.785   1.025   0.751   1.025   1.019  -0.068
+
+             -0.109  -0.064  -0.109  -0.109  -0.185  -0.286  -0.173  -0.285
+
+             -0.284
+   5  7.477   0.984   0.017   0.073  -0.013   0.989   0.989   0.990   0.169
+              0.172   0.169   0.788   1.027   0.751   1.027   1.013  -0.069
+
+             -0.109  -0.064  -0.109  -0.108  -0.186  -0.286  -0.172  -0.286
+
+             -0.281
+   6  7.464   0.984   0.016   0.074  -0.013   0.990   0.989   0.990   0.168
+              0.172   0.169   0.780   1.024   0.748   1.023   1.018  -0.068
+
+             -0.109  -0.064  -0.109  -0.109  -0.184  -0.285  -0.172  -0.285
+
+             -0.284
+
+mulliken: Qtot =       44.997
+
+mulliken: Spin DOWN 
+
+Species: Mn                  
+Atom  Qatom  Qorb
+               3s      4s      4s      4s      3py     3pz     3px     4py     
+               4pz     4px     3dxy    3dyz    3dz2    3dxz    3dx2-y2 3dxy    
+               3dyz    3dz2    3dxz    3dx2-y2 3dxy    3dyz    3dz2    3dxz    
+               3dx2-y2 
+   1  7.464   0.984   0.018   0.073  -0.014   0.989   0.989   0.990   0.169
+              0.172   0.168   0.781   1.024   0.747   1.024   1.012  -0.068
+
+             -0.109  -0.064  -0.109  -0.108  -0.184  -0.285  -0.171  -0.285
+
+             -0.280
+   2  7.479   0.984   0.015   0.074  -0.012   0.990   0.989   0.990   0.169
+              0.172   0.169   0.789   1.027   0.754   1.027   1.019  -0.069
+
+             -0.109  -0.064  -0.109  -0.109  -0.186  -0.286  -0.174  -0.286
+
+             -0.284
+   3  7.473   0.984   0.015   0.074  -0.012   0.990   0.989   0.990   0.169
+              0.172   0.169   0.785   1.025   0.752   1.025   1.018  -0.068
+
+             -0.109  -0.064  -0.109  -0.109  -0.185  -0.286  -0.173  -0.285
+
+             -0.284
+   4  7.528   0.985   0.012   0.075  -0.011   0.990   0.990   0.990   0.170
+              0.173   0.170   0.823   1.039   0.773   1.038   1.019  -0.072
+
+             -0.111  -0.066  -0.111  -0.108  -0.197  -0.289  -0.180  -0.289
+
+             -0.284
+   5  7.521   0.984   0.016   0.074  -0.013   0.989   0.990   0.990   0.170
+              0.173   0.170   0.819   1.037   0.770   1.037   1.013  -0.072
+
+             -0.111  -0.065  -0.111  -0.107  -0.196  -0.289  -0.178  -0.289
+
+             -0.280
+   6  7.537   0.985   0.012   0.075  -0.011   0.990   0.990   0.990   0.170
+              0.174   0.170   0.827   1.040   0.776   1.040   1.020  -0.073
+
+             -0.111  -0.066  -0.111  -0.108  -0.198  -0.290  -0.181  -0.290
+
+             -0.284
+
+mulliken: Qtot =       45.003
+
+Mulliken Atomic Populations:
+Atom #   charge [q] valence [e]      Sz [e]  Species
+     1     0.001970   14.998030    0.070947  Mn
+     2    -0.000990   15.000990    0.042185  Mn
+     3    -0.000950   15.000950    0.054023  Mn
+     4    -0.000990   15.000990   -0.055925  Mn
+     5     0.001895   14.998105   -0.044105  Mn
+     6    -0.000937   15.000937   -0.072701  Mn
+-------------------------------------------
+ Total     0.000000               -0.005575
+
+cite: Please indicate the Siesta version in published work: 5.2.2
+cite: This calculation has made use of features in the following articles
+cite: which we encourage you to cite in published work.
+cite: (Please see "hea.bib" for a BibTeX file.)
+        Primary SIESTA paper
+          DOI: www.doi.org/10.1088/0953-8984/14/11/302
+        PSML pseudopotential format
+          DOI: www.doi.org/10.1016/j.cpc.2018.02.011
+
+
+>> End of run:  31-JUL-2025  23:02:53
+Job completed
