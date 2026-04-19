@@ -1,0 +1,57 @@
+SystemName          hea
+SystemLabel         hea
+Reparametrize.Pseudos T
+Restricted.Radial.Grid F
+%include atoms.fdf
+MaxSCFIterations     20000
+SCF.Mix              Hamiltonian
+SCF.Mixer.Method     Broyden
+#SCF.Mixer.Variant    original #Pulay original
+SCF.Mixer.History    8
+SCF.Mixer.Weight     0.07
+SCF.H.Converge       False
+SCF.DM.Converge      True
+SCF.DM.Tolerance     5.d-4
+SCF.H.Tolerance      5.d-3 eV
+MeshCutoff 300.0 Ry
+MD.UseSaveCG         False
+DM.UseSaveDM         False
+NumberOfEigenStates -20
+ElectronicTemperature 300 K
+WriteCoorXmol        True
+XC.Functional     GGA
+XC.authors        PBEsol
+Spin polarized
+DM.InitSpin.AF true
+SolutionMethod       diagon
+#Diag.Algorithm        MRRR
+###################################
+###################################
+# Full template for Basis param.
+###################################
+###################################
+Basis.Pressure 0.3 GPa
+PAO.SoftDefault T
+PAO.SoftPotential 50.0 Ry
+PAO.SoftInnerRadius 0.70
+PAO.BasisType split
+PAO.EnergyShift 0.0019 eV
+PAO.BasisSize TZP
+PAO.SplitTailNorm T
+            %block kgrid_Monkhorst_Pack
+            6  0  0  0.
+            0  3  0  0.
+            0  0  4  0.
+            %endblock kgrid_Monkhorst_Pack
+            MD.TypeOfRun CG
+            MD.Steps         500
+            MD.VariableCell true
+            MD.MaxForceTol 0.05 eV/Ang
+            WriteMDHistory true
+            WriteForces true
+            Write.OrbitalIndex true
+            Charge.Mulliken end
+            COOP.Write true
+            %block ProjectedDensityOfStates
+            -20.00 20.00 0.1 1000 eV
+            %endblock ProjectedDensityOfStates
