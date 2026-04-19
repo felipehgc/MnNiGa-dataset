@@ -9,7 +9,7 @@ Dataset of spin-polarized DFT calculations for the Mn–Ni–Ga Heusler ternary,
 
 ## Contents
 
-`siesta-outputs/system_N/` — one folder per calculated structure (370 total), containing SIESTA input and output files.
+`siesta-outputs/calculationN/` — one folder per calculated structure (370 total), containing SIESTA input and output files.
 
 Each folder includes:
 - `input.fdf`, `atoms.fdf` — calculation input
