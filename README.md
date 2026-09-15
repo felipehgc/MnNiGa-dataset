@@ -2,7 +2,7 @@
 
 Dataset of spin-polarized DFT calculations for the Mn–Ni–Ga Heusler ternary, associated with the paper:
 
-> **Orbital fingerprinting of magnetic phase stability across the Mn–Ni–Ga Heusler ternary**  
+> **Orbital fingerprinting of magnetism across the Mn–Ni–Ga Heusler ternary**  
 > F. Hawthorne, D. A. Damasceno, R. Tromer, R. R. Pelá, C. F. Woellner
 
 ---
@@ -42,4 +42,6 @@ Each folder includes:
 
 ## Citation
 
-If you use this dataset, please cite the associated paper (preprint/DOI to be added upon publication).
+Dataset DOI: [10.5281/zenodo.19651125](https://doi.org/10.5281/zenodo.19651125)
+
+If you use this dataset, please cite the Zenodo record above. The associated paper is currently under review at APL Machine Learning; its citation will be added here once available.
