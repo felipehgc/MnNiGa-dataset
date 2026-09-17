@@ -44,4 +44,4 @@ Each folder includes:
 
 Dataset DOI: [10.5281/zenodo.19651125](https://doi.org/10.5281/zenodo.19651125)
 
-If you use this dataset, please cite the Zenodo record above. The associated paper is currently under review at APL Machine Learning; its citation will be added here once available.
+If you use this dataset, please cite the Zenodo record above. 
